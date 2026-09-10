@@ -86,11 +86,11 @@ jobs:
         run: |
           cd build_cxx_test
           export CASM_PREFIX=$(python -m libcasm.casmglobal --prefix)
-          make test
+          ctest -V
 
-      # - name: upload test log
-      #   if: always()
-      #   uses: actions/upload-artifact@v6
-      #   with:
-      #     name: libcasm-clexulator-cxx-test-log
-      #     path: build_cxx_test/Testing/Temporary/LastTest.log
+      - name: upload test log
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: libcasm-clexulator-cxx-test-log
+          path: build_cxx_test/Testing/Temporary/LastTest.log
